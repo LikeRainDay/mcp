@@ -1,0 +1,77 @@
+sls:
+  common_indexes: &common_indexes
+    - name: "traceId"
+      description: "链路追踪ID"
+      index_type: "text"
+    - name: "level"
+      description: "日志级别"
+      index_type: "text"
+    - name: "app_name"
+      description: "应用名称"
+      index_type: "text"
+    - name: "thread_name"
+      description: "线程名称"
+      index_type: "text"
+    - name: "class_name"
+      description: "类名"
+      index_type: "text"
+    - name: "date"
+      description: "时间"
+      index_type: "text"
+    - name: "log"
+      description: "日志内容"
+      index_type: "text"
+
+  projects:
+    - name: "ack-test-cluster-log"
+      environment: "test"
+      description: "阿里云测试环境日志"
+      logstores:
+        - name: "user-center-api"
+          description: "用户中心API日志"
+          indexes: *common_indexes
+        - name: "order-center-api"
+          description: "订单中心API日志"
+          indexes:
+            - name: "content"
+              description: "日志"
+              index_type: "text"
+    - name: "ack-pre-cluster-log"
+      environment: "pre"
+      description: "阿里云生产环境日志"
+      logstores:
+        - name: "user-center-api"
+          description: "用户中心API日志"
+          indexes: *common_indexes
+    - name: "ack-prod-cluster-log"
+      environment: "prod"
+      description: "阿里云生产环境日志"
+      logstores:
+        - name: "pc-user-center-api"
+          description: "用户中心API日志"
+          indexes: *common_indexes
+
+nacos:
+  - namespace: "nacos namespace"
+    description: 测试环境
+    data_ids:
+      - data_id: user-center-api-dev.yaml
+        application_name: user-center-api
+        group: DEFAULT_GROUP
+        description: 用户中心服务
+
+mysql:
+  - name: "mobile_test"
+    host: "localhost"
+    port: 3306
+    username: "root"
+    password: "password"
+    description: "test database"
+
+redis:
+  - name: "mobile_test"
+    host: localhost
+    port: 6379
+    password: password
+    description: "Mobile Redis"
+    environment: "test"

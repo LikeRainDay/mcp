@@ -1,0 +1,6 @@
+/target
+.env
+.github
+.idea
+
+config.yml

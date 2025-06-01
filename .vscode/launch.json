@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run MCP Server (cargo)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cargo run"
+    },
+    {
+      "name": "Run MCP Inspector",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npx @modelcontextprotocol/inspector sse http://127.0.0.1:3001/sse"
+    }
+  ]
+}
