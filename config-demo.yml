@@ -75,3 +75,18 @@ redis:
     password: password
     description: "Mobile Redis"
     environment: "test"
+
+elasticsearch:
+  - name: "es6_prod"
+    url: "http://es6-prod:9200"
+    version: "6.8"
+    username: "user"
+    password: "pass"
+    description: "Production ES 6.8 cluster"
+    environment: "prod"
+
+  - name: "es8_dev"
+    url: "http://es8-dev:9200"
+    version: "8.0"
+    description: "Development ES 8.0 cluster"
+    environment: "dev"

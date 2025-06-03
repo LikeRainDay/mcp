@@ -15,6 +15,13 @@ use crate::mcp::mcp_mysql::{
 };
 use crate::mcp::mcp_nacos::{GetNacosConfigByClient, GetNacosServiceInfoByClient};
 use crate::mcp::mcp_redis::{ExecuteRedisCommand, ListRedisConnections, ListRedisDatabases};
+
+use crate::mcp::mcp_elasticsearch::{
+    EsGetAliases, EsGetHealth, EsGetIndex, EsGetMapping, EsGetVersion, EsIndexExists,
+    EsListConfigs, EsSearch,
+};
+use crate::mcp::mcp_elasticsearch_fields::{GetEsFieldsConfig, GetEsIndexFields};
+
 use crate::mcp::mcp_time::GetCurrentTime;
 use crate::utils::nacos_config::init_nacos_config;
 
@@ -55,6 +62,16 @@ async fn main() -> Result<(), anyhow::Error> {
         .register_tool(ListMysqlDatabases::tool(), ListMysqlDatabases::call())
         .register_tool(ListMysqlTables::tool(), ListMysqlTables::call())
         .register_tool(ListRedisDatabases::tool(), ListRedisDatabases::call())
+        .register_tool(EsListConfigs::tool(), EsListConfigs::call())
+        .register_tool(EsIndexExists::tool(), EsIndexExists::call())
+        .register_tool(EsGetIndex::tool(), EsGetIndex::call())
+        .register_tool(EsGetAliases::tool(), EsGetAliases::call())
+        .register_tool(EsGetMapping::tool(), EsGetMapping::call())
+        .register_tool(EsGetHealth::tool(), EsGetHealth::call())
+        .register_tool(EsSearch::tool(), EsSearch::call())
+        .register_tool(EsGetVersion::tool(), EsGetVersion::call())
+        .register_tool(GetEsFieldsConfig::tool(), GetEsFieldsConfig::call())
+        .register_tool(GetEsIndexFields::tool(), GetEsIndexFields::call())
         .build();
 
     let mcp_server_transport =

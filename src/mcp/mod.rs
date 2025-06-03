@@ -5,3 +5,5 @@ pub mod mcp_config;
 pub mod mcp_nacos;
 pub mod mcp_mysql;
 pub mod mcp_redis;
+pub mod mcp_elasticsearch;
+pub mod mcp_elasticsearch_fields;

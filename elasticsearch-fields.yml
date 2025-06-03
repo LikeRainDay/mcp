@@ -1,0 +1,53 @@
+indices:
+  - name: "user_index"
+    description: "用户信息索引"
+    fields:
+      - name: "user_id"
+        description: "用户ID"
+        is_sortable: true
+        is_aggregatable: false
+        is_multi_value: false
+      - name: "username"
+        description: "用户名"
+        is_sortable: true
+        is_aggregatable: true
+        is_multi_value: false
+      - name: "tags"
+        description: "用户标签"
+        is_sortable: false
+        is_aggregatable: true
+        is_multi_value: true
+      - name: "created_at"
+        description: "创建时间"
+        is_sortable: true
+        is_aggregatable: true
+        is_multi_value: false
+
+  - name: "order_index"
+    description: "订单信息索引"
+    fields:
+      - name: "order_id"
+        description: "订单ID"
+        is_sortable: true
+        is_aggregatable: false
+        is_multi_value: false
+      - name: "user_id"
+        description: "下单用户ID"
+        is_sortable: true
+        is_aggregatable: true
+        is_multi_value: false
+      - name: "order_status"
+        description: "订单状态"
+        is_sortable: true
+        is_aggregatable: true
+        is_multi_value: false
+      - name: "order_amount"
+        description: "订单金额"
+        is_sortable: true
+        is_aggregatable: true
+        is_multi_value: false
+      - name: "created_at"
+        description: "创建时间"
+        is_sortable: true
+        is_aggregatable: true
+        is_multi_value: false
