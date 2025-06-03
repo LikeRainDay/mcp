@@ -1,21 +1,12 @@
-FROM alpine:3.18
+FROM python:3.14-rc-alpine
 
-# 使用阿里云镜像源，解决国内网络问题
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN apk add --no-cache build-base libffi-dev python3-dev
 
-# 安装常用依赖
-RUN apk add --no-cache python3 py3-pip wget
-
-# 安装 aliyun-log-cli
 RUN pip3 install -U aliyun-log-cli --no-cache
 
-# 安装 aliyun-cli
 RUN wget https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz \
     && tar -xvzf aliyun-cli-linux-latest-amd64.tgz \
     && rm aliyun-cli-linux-latest-amd64.tgz \
-    && mv aliyun /usr/local/bin/ \
-    # 兼容 musl libc 的动态链接
-    && mkdir -p /lib64 \
-    && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+    && mv aliyun /usr/local/bin/
 
 WORKDIR /app
