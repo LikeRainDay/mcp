@@ -6,6 +6,11 @@ if [ -z "$ALIYUN_ACCESS_KEY_ID" ] || [ -z "$ALIYUN_ACCESS_KEY_SECRET" ] || [ -z 
   exit 1
 fi
 
+if [ -z "$ALIYUN_SLS_ENDPOINT" ]; then
+  echo "请设置 ALIYUN_SLS_ENDPOINT 环境变量"
+  exit 1
+fi
+
 aliyun configure set \
   --profile AkProfile \
   --mode AK \
@@ -13,4 +18,6 @@ aliyun configure set \
   --access-key-secret "$ALIYUN_ACCESS_KEY_SECRET" \
   --region "$ALIYUN_REGION_ID"
 
-exec /usr/local/bin/rig-mcp-server
+aliyunlog configure "$ALIYUN_ACCESS_KEY_ID" "$ALIYUN_ACCESS_KEY_SECRET" "$ALIYUN_SLS_ENDPOINT"
+
+exec /usr/local/bin/mcp-server

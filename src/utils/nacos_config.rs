@@ -17,7 +17,7 @@ pub fn nacos_namespace() -> String {
     env::var("NACOS_NAMESPACE").unwrap_or_else(|_| "public".to_string())
 }
 pub fn nacos_data_id() -> String {
-    env::var("NACOS_DATA_ID").unwrap_or_else(|_| "rig-mcp-server.yaml".to_string())
+    env::var("NACOS_DATA_ID").unwrap_or_else(|_| "mcp-server.yaml".to_string())
 }
 pub fn nacos_group() -> String {
     env::var("NACOS_GROUP").unwrap_or_else(|_| "DEFAULT_GROUP".to_string())
@@ -59,7 +59,7 @@ pub async fn init_nacos_config() -> Result<()> {
     let props = ClientProps::new()
         .server_addr(&nacos_server_addr())
         .namespace(&nacos_namespace())
-        .app_name("rig-mcp-server");
+        .app_name("mcp-server");
     let config_service = ConfigServiceBuilder::new(props).build()?;
 
     // 读取主配置
@@ -136,7 +136,7 @@ pub async fn get_nacos_config_by(namespace: &str, data_id: &str, group: &str) ->
     let props = ClientProps::new()
         .server_addr(&nacos_server_addr())
         .namespace(namespace)
-        .app_name("rig-mcp-server");
+        .app_name("mcp-server");
     let config_service = ConfigServiceBuilder::new(props).build()?;
     let config_resp = config_service.get_config(data_id.to_string(), group.to_string()).await?;
     let content = config_resp.content().to_string();
@@ -152,7 +152,7 @@ pub async fn get_nacos_service_info_by(namespace: &str, service_name: &str, grou
     let props = ClientProps::new()
         .server_addr(&nacos_server_addr())
         .namespace(namespace)
-        .app_name("rig-mcp-server");
+        .app_name("mcp-server");
     let naming_service = NamingServiceBuilder::new(props).build()?;
     // 获取所有实例（可根据需要调整参数）
     let instances = naming_service.get_all_instances(

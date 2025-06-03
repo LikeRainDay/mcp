@@ -2008,6 +2008,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "mcp-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base64 0.21.7",
+ "chrono",
+ "dotenv",
+ "elasticsearch",
+ "mcp-core",
+ "mcp-core-macros",
+ "mysql",
+ "nacos-sdk",
+ "once_cell",
+ "percent-encoding",
+ "redis",
+ "reqwest 0.11.27",
+ "rig-core",
+ "schemars",
+ "serde",
+ "serde_json",
+ "serde_yaml",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+ "url",
+]
+
+[[package]]
 name = "memchr"
 version = "2.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2803,34 +2831,6 @@ dependencies = [
  "serde_json",
  "thiserror",
  "tracing",
-]
-
-[[package]]
-name = "rig-mcp-server"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "base64 0.21.7",
- "chrono",
- "dotenv",
- "elasticsearch",
- "mcp-core",
- "mcp-core-macros",
- "mysql",
- "nacos-sdk",
- "once_cell",
- "percent-encoding",
- "redis",
- "reqwest 0.11.27",
- "rig-core",
- "schemars",
- "serde",
- "serde_json",
- "serde_yaml",
- "tokio",
- "tracing",
- "tracing-subscriber",
- "url",
 ]
 
 [[package]]
