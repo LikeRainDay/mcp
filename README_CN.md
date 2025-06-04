@@ -1,5 +1,21 @@
 # MCP
 
+# 构建
+
+```bash
+docker build \
+  --build-arg ALIYUN_REGION_ID=cn-beijing \
+  --build-arg ALIYUN_ACCESS_KEY_ID=** \
+  --build-arg ALIYUN_ACCESS_KEY_SECRET=** \
+  --build-arg NACOS_SERVER_ADDR=localhost:8848 \
+  --build-arg NACOS_NAMESPACE=** \
+  --build-arg NACOS_DATA_ID=mcp_rust.yml \
+  --build-arg NACOS_GROUP=DEFAULT_GROUP \
+  --build-arg OFFLINE_MODE=false \
+  --build-arg CONFIG_FILE=config.yml \
+  -t mcp-server:latest .
+```
+
 ## 使用方式
 
 - 启动 MCP 服务
@@ -13,7 +29,7 @@ npx @modelcontextprotocol/inspector sse http://127.0.0.1:3001/sse
 - Run in Docker in Docker
 
 ```
-docker run -e ALIYUN_ACCESS_KEY_ID=xxx -e ALIYUN_ACCESS_KEY_SECRET=yyy -e ALIYUN_REGION_ID=cn-hangzhou your-image-name
+docker run -d -it -p 3001:3001  --name=test-mcp  mcp_service:latest
 ```
 
 - Cursor MCP 配置
