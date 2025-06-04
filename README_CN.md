@@ -38,12 +38,13 @@ docker run -d -it -p 3001:3001  --name=test-mcp  mcp_service:latest
 
 ```json
 {
-  "mcpServers": {
-    "server-name": {
-      "url": "http://localhost:3001/sse",
+    "mcpServers": {
+        "mcp-server": {
+            "url": "http://localhost:3001/sse"
+        }
     }
-  }
 }
+
 ```
 ---
 
